@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Resources/Scenes/Slingshot.unity
+    guid: 1096a25931b64e0468adfafb32dde97b
   m_configObjects: {}
