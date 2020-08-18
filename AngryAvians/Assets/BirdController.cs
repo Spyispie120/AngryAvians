@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+using UnityEngine.SceneManagement;
+
 public class BirdController : MonoBehaviour
 {
     [SerializeField] 
@@ -25,6 +27,11 @@ public class BirdController : MonoBehaviour
     void Update()
     {
         
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         if(Input.GetMouseButtonDown((int)MouseButton.LeftMouse))
         {
             isMouseDown = true;
@@ -67,7 +74,7 @@ public class BirdController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         springJoint.enabled = false;
-        this.enabled = false;
+        //this.enabled = false;
     }
     
 }
