@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -12,6 +13,7 @@ public class BirdController : MonoBehaviour
     private SpringJoint2D springJoint;
 
     private bool isMouseDown;
+    private bool holdBird;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,20 +24,42 @@ public class BirdController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(Input.GetMouseButtonDown((int)MouseButton.LeftMouse))
         {
             isMouseDown = true;
         }
         
         if(Input.GetMouseButtonUp((int)MouseButton.LeftMouse)) {
-            StartCoroutine(Release(releaseTime));
+            rb.isKinematic = false;
             isMouseDown = false;
+            
+            if(holdBird) StartCoroutine(Release(releaseTime));
+            holdBird = false;
+            
         }
+
+        if(isMouseDown && holdBird)
+        {
+            rb.MovePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            rb.isKinematic = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        RaycastHit2D rayHit;
 
         if(isMouseDown)
         {
-            rb.MovePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
+            rayHit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.back);
+            if(rayHit.collider != null)
+            {
+                if(rayHit.collider.CompareTag("Bird"))
+                {
+                    holdBird = true;
+                }
+            }
         }
     }
 
