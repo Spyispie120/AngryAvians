@@ -13,14 +13,26 @@ public class BirdController : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpringJoint2D springJoint;
+    private SpriteRenderer sr;
 
     private bool isMouseDown;
     private bool holdBird;
+
+    private const string DIRECTORY = "Sprites/Avians/DefaultAvian/";
+    [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private Sprite flyingSprite;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         springJoint = GetComponent<SpringJoint2D>();
+        sr = this.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>();
+        defaultSprite = sr.sprite;
+        flyingSprite = Resources.Load<Sprite>(DIRECTORY + "avian_fly") as Sprite;
+
+        Debug.Log(defaultSprite);
+        Debug.Log(flyingSprite);
     }
 
     // Update is called once per frame
@@ -74,6 +86,7 @@ public class BirdController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         springJoint.enabled = false;
+        sr.sprite = flyingSprite;
         //this.enabled = false;
     }
     
