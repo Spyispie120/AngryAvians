@@ -21,6 +21,7 @@ public class BirdController : MonoBehaviour
     private const string DIRECTORY = "Sprites/Avians/DefaultAvian/";
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite flyingSprite;
+    [SerializeField] private float MAX_DISTANCE;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +61,18 @@ public class BirdController : MonoBehaviour
 
         if(isMouseDown && holdBird)
         {
-            rb.MovePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 connectedAnchorWorldPos = transform.TransformPoint(springJoint.connectedAnchor);
+            Vector2 mouseDir = (mouseWorldPos - connectedAnchorWorldPos).normalized;
+            float mouseLength = Mathf.Abs(Vector2.Distance(mouseWorldPos, connectedAnchorWorldPos));//springJoint.distance;//
+
+            Vector2 movePoint = mouseLength <= MAX_DISTANCE ? 
+                                mouseWorldPos : 
+                                connectedAnchorWorldPos + mouseDir * MAX_DISTANCE;
+
+            Debug.DrawLine(connectedAnchorWorldPos, movePoint, Color.cyan, 1);
+
+            rb.MovePosition(movePoint);
             rb.isKinematic = true;
         }
     }
