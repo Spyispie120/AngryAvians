@@ -13,6 +13,8 @@ public class BirdController : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpringJoint2D springJoint;
+    [SerializeField]
+    private Transform anchor;
     private SpriteRenderer sr;
 
     private bool isMouseDown;
@@ -28,6 +30,8 @@ public class BirdController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         springJoint = GetComponent<SpringJoint2D>();
+        //anchor = springJoint.attachedRigidbody.transform.GetChild(0);
+
         sr = this.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>();
         defaultSprite = sr.sprite;
         flyingSprite = Resources.Load<Sprite>(DIRECTORY + "avian_fly") as Sprite;
@@ -62,7 +66,8 @@ public class BirdController : MonoBehaviour
         if(isMouseDown && holdBird)
         {
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 connectedAnchorWorldPos = transform.TransformPoint(springJoint.connectedAnchor);
+            Vector2 connectedAnchorWorldPos = anchor.position;// transform.TransformPoint(springJoint.connectedAnchor);
+            Debug.Log(connectedAnchorWorldPos);
             Vector2 mouseDir = (mouseWorldPos - connectedAnchorWorldPos).normalized;
             float mouseLength = Mathf.Abs(Vector2.Distance(mouseWorldPos, connectedAnchorWorldPos));//springJoint.distance;//
 

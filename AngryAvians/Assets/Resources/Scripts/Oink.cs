@@ -26,10 +26,10 @@ public class Oink : MonoBehaviour
         float jonahsFreeMomentum = collision.relativeVelocity.magnitude *
                                    (otherRb != null ? otherRb.mass : 1);  // weighted speed
 
-        Debug.Log("[" + collision.gameObject.name + "] entering speed: " + collision.relativeVelocity.magnitude);
-        Debug.Log("[" + collision.gameObject.name + "] entering Jonah's Free Momentum: " + jonahsFreeMomentum);
-        Debug.Log("[" + collision.gameObject.name + "] dot: " + (Vector2.Dot(collision.contacts[0].normal.normalized, 
-                                                                             collision.relativeVelocity.normalized) >= DIRECTIONAL_THRESHOLD));
+        //Debug.Log("[" + collision.gameObject.name + "] entering speed: " + collision.relativeVelocity.magnitude);
+        //Debug.Log("[" + collision.gameObject.name + "] entering Jonah's Free Momentum: " + jonahsFreeMomentum);
+        //Debug.Log("[" + collision.gameObject.name + "] dot: " + (Vector2.Dot(collision.contacts[0].normal.normalized, 
+        //                                                                     collision.relativeVelocity.normalized) >= DIRECTIONAL_THRESHOLD));
         if (IsFatalVelocity(collision))
         {
             Destroy(this.gameObject);
