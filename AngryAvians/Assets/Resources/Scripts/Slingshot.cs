@@ -12,6 +12,7 @@ public class Slingshot : MonoBehaviour
     [SerializeField]
     private BirdController[] birds;
     public BirdController currentBird;
+    public BirdController releasedBird;
 
     [SerializeField] private float MAX_DISTANCE;
 
@@ -22,11 +23,10 @@ public class Slingshot : MonoBehaviour
     private float releaseTime;
 
     private bool isMouseDown;
-    private bool holdBird;
+    public bool HoldBird { get; private set;  }
     
-
-    public Rigidbody2D rb;
-    public SpringJoint2D springJoint;
+    private Rigidbody2D rb;
+    private SpringJoint2D springJoint;
 
     // Start is called before the first frame update
     void Start()
@@ -48,25 +48,23 @@ public class Slingshot : MonoBehaviour
         if (Input.GetMouseButtonDown((int)MouseButton.LeftMouse))
         {
             isMouseDown = true;
+            releasedBird = null; // kinda jank // this stops camera to interp to release bird
         }
 
-
-        
         if (Input.GetMouseButtonUp((int)MouseButton.LeftMouse))
         {
             rb.isKinematic = false;
             isMouseDown = false;
 
             // Release
-            if (holdBird)
+            if (HoldBird)
             {
                 StartCoroutine(Release(releaseTime));
             }
-            holdBird = false;
-
+            HoldBird = false;
         }
 
-        if (isMouseDown && holdBird)
+        if (isMouseDown && HoldBird)
         {
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 connectedAnchorWorldPos = anchor.position;// transform.TransformPoint(springJoint.connectedAnchor);
@@ -99,7 +97,7 @@ public class Slingshot : MonoBehaviour
             {
                 if (rayHit.collider.CompareTag("Bird"))
                 {
-                    holdBird = true;
+                    HoldBird = true;
                 }
             }
         }
@@ -109,6 +107,7 @@ public class Slingshot : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         springJoint.enabled = false;
+        releasedBird = currentBird;
 
         //this.enabled = false;
         yield return new WaitForSeconds(1f);
