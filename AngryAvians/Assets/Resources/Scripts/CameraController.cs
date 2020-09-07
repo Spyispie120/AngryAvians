@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Vector3 originalPosition;
     [SerializeField] private float panSpeed = 0.5f;
+    [SerializeField] private float lerpSpeed = 2f;
     private bool isMouseDown;
     private Vector3 oldPosition;
     private Vector3 oldPositionScreen;
@@ -93,6 +94,6 @@ public class CameraController : MonoBehaviour
         Vector3 newPosition = new Vector3(x < boundX.x ? boundX.x : x > boundX.y ? boundX.y : x,
                                   y < boundY.x ? boundY.x : y > boundY.y ? boundY.y : y, camPos.z);
 
-        this.transform.position = Vector3.Lerp(this.transform.position, newPosition, Time.deltaTime);
+        this.transform.position = Vector3.Lerp(this.transform.position, newPosition, Time.deltaTime * lerpSpeed);
     }
 }
