@@ -298,7 +298,7 @@ MonoBehaviour:
   - {fileID: 0}
   MAX_DISTANCE: 5
   anchor: {fileID: 8165541461149045363}
-  releaseTime: 0
+  releaseTime: 0.2
 --- !u!120 &8165541462110168558
 LineRenderer:
   m_ObjectHideFlags: 0

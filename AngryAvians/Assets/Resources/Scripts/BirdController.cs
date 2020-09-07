@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class BirdController : MonoBehaviour
 {
-
     protected SpriteRenderer sr;
 
     public Rigidbody2D RB { get; private set; }
@@ -22,7 +21,7 @@ public class BirdController : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
         SpringJoint = GetComponent<SpringJoint2D>();

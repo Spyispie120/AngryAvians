@@ -8,11 +8,10 @@ public class Slingshot : MonoBehaviour
 {
     private LineRenderer line;
 
-    
     private int index = 0;
     [SerializeField]
     private BirdController[] birds;
-    private BirdController currentBird;
+    public BirdController currentBird;
 
     [SerializeField] private float MAX_DISTANCE;
 
@@ -26,8 +25,8 @@ public class Slingshot : MonoBehaviour
     private bool holdBird;
     
 
-    private Rigidbody2D rb;
-    private SpringJoint2D springJoint;
+    public Rigidbody2D rb;
+    public SpringJoint2D springJoint;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +39,6 @@ public class Slingshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Vector2 mouseScroll = Input.mouseScrollDelta;
 
         if (Input.GetKeyDown(KeyCode.R))
         {
