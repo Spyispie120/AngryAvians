@@ -27,20 +27,21 @@ public class BirdController : MonoBehaviour
         SpringJoint = GetComponent<SpringJoint2D>();
         //anchor = springJoint.attachedRigidbody.transform.GetChild(0);
 
-        sr = this.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>();
-        defaultSprite = sr.sprite;
-        flyingSprite = Resources.Load<Sprite>(DIRECTORY + "avian_fly") as Sprite;
-
-        isFlying = false;
-
         Debug.Log(defaultSprite);
         Debug.Log(flyingSprite);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Start()
     {
+        isFlying = false;
+        SetSprite(DIRECTORY);
+    }
 
+    protected void SetSprite(String dir)
+    {
+        sr = this.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>();
+        defaultSprite = sr.sprite;
+        flyingSprite = Resources.Load<Sprite>(dir + "avian_fly") as Sprite;
     }
 
     public void Release()

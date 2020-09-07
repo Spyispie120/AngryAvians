@@ -9,16 +9,27 @@ using UnityEngine.SceneManagement;
 public class EggBirdController : BirdController
 {
     public new const string DIRECTORY = "Sprites/Avians/EggAvian/";
-    [SerializeField] public const float EGG_FORCE = 10f;
+    [SerializeField] private float EGG_FORCE = 5f;
+    [SerializeField] private GameObject eggGO;
+    [SerializeField] private float eggCount = 1f;
+
+    private float EGG_DISTANCE = 5f;
+
+    protected override void Start()
+    {
+        base.Start();
+        SetSprite(DIRECTORY);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isFlying)
+        if (Input.GetMouseButtonDown(0) && isFlying && eggCount-- > 0)
         {
-            Vector2 direction = Input.mousePosition - this.transform.position;
-            RB.AddForce(EGG_FORCE * RB.mass * -direction);
+            Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            Egg egg = Instantiate(eggGO, transform.position + direction.normalized * EGG_DISTANCE, Quaternion.identity).GetComponent<Egg>();
+            egg.Push(EGG_FORCE * RB.mass * direction, ForceMode2D.Impulse);
+            RB.AddForce(EGG_FORCE * RB.mass * -direction, ForceMode2D.Impulse);
         }
     }
-    
 }

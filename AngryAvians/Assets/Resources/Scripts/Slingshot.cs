@@ -107,6 +107,7 @@ public class Slingshot : MonoBehaviour
 
     private IEnumerator Release(float time)
     {
+        currentBird.Release();
         yield return new WaitForSeconds(time);
         springJoint.enabled = false;
 
