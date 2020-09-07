@@ -292,6 +292,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa578585b5bb694985d5f1192d1a2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  birds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  MAX_DISTANCE: 5
+  anchor: {fileID: 8165541461149045363}
+  releaseTime: 0
 --- !u!120 &8165541462110168558
 LineRenderer:
   m_ObjectHideFlags: 0
