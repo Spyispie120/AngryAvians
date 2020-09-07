@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5328540244506775355}
   - component: {fileID: 5328540244506775359}
   - component: {fileID: 5328540244506775354}
-  - component: {fileID: 5328540244506775358}
+  - component: {fileID: 4744519109159949566}
   m_Layer: 0
-  m_Name: angrybird
+  m_Name: eggbird
   m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ SpringJoint2D:
   m_Distance: 35.99853
   m_DampingRatio: 0
   m_Frequency: 1.5
---- !u!114 &5328540244506775358
+--- !u!114 &4744519109159949566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,11 +152,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5328540244506775353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44568a23710fc543a279fd8616c0bd8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7443d692408bf5c48910e80e5e6b1510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 0}
   flyingSprite: {fileID: 0}
+  EGG_FORCE: 5
+  eggGO: {fileID: 6710916074215859731, guid: 4f8a89262dddd1244b652c4c69650a86, type: 3}
 --- !u!1 &6220759173593666790
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +280,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 95a0fb75c99338944b91ca59089352f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 104103fe20ccee34eb90e946a01a5463, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
