@@ -18,6 +18,8 @@ public class BirdController : MonoBehaviour
     [SerializeField] protected Sprite defaultSprite;
     [SerializeField] protected Sprite flyingSprite;
 
+    protected bool isFlying;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,8 @@ public class BirdController : MonoBehaviour
         sr = this.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>();
         defaultSprite = sr.sprite;
         flyingSprite = Resources.Load<Sprite>(DIRECTORY + "avian_fly") as Sprite;
+
+        isFlying = false;
 
         Debug.Log(defaultSprite);
         Debug.Log(flyingSprite);
@@ -43,6 +47,7 @@ public class BirdController : MonoBehaviour
     public void Release()
     {
         sr.sprite = flyingSprite;
+        isFlying = true;
     }
 
 
