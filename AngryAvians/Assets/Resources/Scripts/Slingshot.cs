@@ -8,8 +8,10 @@ public class Slingshot : MonoBehaviour
 {
     private LineRenderer line;
 
+    
+    private int index = 0;
     [SerializeField]
-    private List<BirdController> birds;
+    private BirdController[] birds;
     private BirdController currentBird;
 
     [SerializeField] private float MAX_DISTANCE;
@@ -22,6 +24,7 @@ public class Slingshot : MonoBehaviour
 
     private bool isMouseDown;
     private bool holdBird;
+    
 
     private Rigidbody2D rb;
     private SpringJoint2D springJoint;
@@ -29,7 +32,7 @@ public class Slingshot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentBird = birds[0];
+        currentBird = birds[index++];
         rb = currentBird.RB;
         springJoint = currentBird.SpringJoint;
     }
@@ -37,6 +40,8 @@ public class Slingshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Vector2 mouseScroll = Input.mouseScrollDelta;
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -58,7 +63,6 @@ public class Slingshot : MonoBehaviour
             // Release
             if (holdBird)
             {
-
                 StartCoroutine(Release(releaseTime));
             }
             holdBird = false;
@@ -85,6 +89,8 @@ public class Slingshot : MonoBehaviour
 
     }
 
+
+
     private void FixedUpdate()
     {
         RaycastHit2D rayHit;
@@ -106,8 +112,16 @@ public class Slingshot : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         springJoint.enabled = false;
-        
+
         //this.enabled = false;
+        yield return new WaitForSeconds(1f);
+        if (index < birds.Length)
+        {
+            currentBird = birds[index++];
+            currentBird.transform.position = anchor.position;
+            rb = currentBird.RB;
+            springJoint = currentBird.SpringJoint;
+        }
     }
 
 }
