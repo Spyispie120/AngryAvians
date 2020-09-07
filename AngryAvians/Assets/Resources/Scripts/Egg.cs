@@ -7,7 +7,7 @@ public class Egg : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private const float MOVEMENT_THRESHHOLD = 0.1f;
     [SerializeField] private const float DESTROY_WAIT = 1f;
-
+    [SerializeField] private GameObject explosionArea;
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,4 +27,12 @@ public class Egg : MonoBehaviour
             Destroy(this.gameObject, DESTROY_WAIT);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject explosion = Instantiate(explosionArea, this.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+        Destroy(explosion, 0.1f);
+    }
+
 }

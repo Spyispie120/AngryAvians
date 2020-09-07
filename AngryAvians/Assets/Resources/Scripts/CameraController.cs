@@ -19,8 +19,10 @@ public class CameraController : MonoBehaviour
     private BoxCollider2D bound;
     private Vector2 boundX, boundY;
 
-    public float MIN_CAMERA_SIZE = 13;
-    
+    public bool lerpToBird;
+
+
+    [SerializeField] private Vector2 cameraSize;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +43,7 @@ public class CameraController : MonoBehaviour
         Vector2 mouseScroll = Input.mouseScrollDelta;
 
         float val = cam.orthographicSize + mouseScroll.y;
-        cam.orthographicSize =  val > MIN_CAMERA_SIZE ? val : MIN_CAMERA_SIZE;
+        cam.orthographicSize =  val > cameraSize.x ? val : cameraSize.y;
 
         if(Input.GetMouseButtonDown((int)MouseButton.LeftMouse))
         {
@@ -69,9 +71,13 @@ public class CameraController : MonoBehaviour
             }
             else if(slingshot.releasedBird != null)
             {
-                float x = slingshot.releasedBird.transform.position.x;
-                float y = slingshot.releasedBird.transform.position.y;
-                LerpCameraBound(x, y);
+                if(lerpToBird)
+                {
+                    float x = slingshot.releasedBird.transform.position.x;
+                    float y = slingshot.releasedBird.transform.position.y;
+                    LerpCameraBound(x, y);
+                }
+               
             }
 
             // uncomment to lerp back to original position

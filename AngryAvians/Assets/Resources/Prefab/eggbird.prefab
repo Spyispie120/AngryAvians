@@ -140,7 +140,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0.17660366, y: 2.968506}
   m_AutoConfigureDistance: 1
-  m_Distance: 35.99853
+  m_Distance: 18.39987
   m_DampingRatio: 0
   m_Frequency: 1.5
 --- !u!114 &4744519109159949566
@@ -159,6 +159,7 @@ MonoBehaviour:
   flyingSprite: {fileID: 0}
   EGG_FORCE: 5
   eggGO: {fileID: 6710916074215859731, guid: 4f8a89262dddd1244b652c4c69650a86, type: 3}
+  eggCount: 1
 --- !u!1 &6220759173593666790
 GameObject:
   m_ObjectHideFlags: 0

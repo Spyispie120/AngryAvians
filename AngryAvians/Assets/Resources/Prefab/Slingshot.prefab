@@ -296,6 +296,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  currentBird: {fileID: 0}
+  releasedBird: {fileID: 0}
   MAX_DISTANCE: 5
   anchor: {fileID: 8165541461149045363}
   releaseTime: 0.2
