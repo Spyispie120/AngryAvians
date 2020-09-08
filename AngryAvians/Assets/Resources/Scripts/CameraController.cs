@@ -7,10 +7,10 @@ public class CameraController : MonoBehaviour
 {
 
     [SerializeField] private Slingshot slingshot;
-    [SerializeField] private float yOffset;
+    [SerializeField] private Vector2 slingshotOffset;
     private Camera cam;
 
-    [SerializeField] private Vector3 originalPosition;
+    private Vector3 originalPosition;
     [SerializeField] private float panSpeed = 0.5f;
     [SerializeField] private float lerpSpeed = 2f;
     private bool isMouseDown;
@@ -87,7 +87,8 @@ public class CameraController : MonoBehaviour
             //}
         } else
         {
-            Vector3 slingshotPosition = new Vector3(slingshot.transform.position.x, slingshot.transform.position.y + yOffset, cam.transform.position.z);
+            // slingshot lerp
+            Vector3 slingshotPosition = new Vector3(slingshot.transform.position.x + slingshotOffset.x, slingshot.transform.position.y + slingshotOffset.y, cam.transform.position.z);
             this.transform.position = Vector3.Lerp(this.transform.position, slingshotPosition, Time.deltaTime);
         }
 
