@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour
         Vector2 mouseScroll = Input.mouseScrollDelta;
 
         float val = cam.orthographicSize + -mouseScroll.y;
-        cam.orthographicSize =  val > cameraSize.x ? val : cameraSize.y;
+        cam.orthographicSize =  val < cameraSize.x ? cameraSize.x : val > cameraSize.y ? cameraSize.y : val;
 
         if(Input.GetMouseButtonDown((int)MouseButton.LeftMouse))
         {

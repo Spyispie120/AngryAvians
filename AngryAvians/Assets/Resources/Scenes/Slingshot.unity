@@ -859,7 +859,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414659867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.7, y: -11.7, z: 0}
+  m_LocalPosition: {x: -20.7, y: -11.7, z: 24.15}
   m_LocalScale: {x: 51.320625, y: 1.7796757, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1277,17 +1277,22 @@ PrefabInstance:
     - target: {fileID: 4019944856622264910, guid: 7463072abd2c9414ea14eb671db59535,
         type: 3}
       propertyPath: slingshotOffset.x
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4019944856622264910, guid: 7463072abd2c9414ea14eb671db59535,
         type: 3}
       propertyPath: slingshotOffset.y
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4019944856622264910, guid: 7463072abd2c9414ea14eb671db59535,
         type: 3}
       propertyPath: cameraSize.y
-      value: 30
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019944856622264910, guid: 7463072abd2c9414ea14eb671db59535,
+        type: 3}
+      propertyPath: lerpToBird
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4019944856622264911, guid: 7463072abd2c9414ea14eb671db59535,
         type: 3}
