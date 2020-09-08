@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Resources/Scenes/Slingshot.unity
+    path: Assets/Resources/Scenes/Level 1.unity
+    guid: f0334fe99121a9a44b8e1cb4cee3a880
+  - enabled: 1
+    path: Assets/Resources/Scenes/Level 2.unity
+    guid: 9c431d37263d0a44d9d3d376585a46b8
+  - enabled: 1
+    path: Assets/Resources/Scenes/Level 3.unity
     guid: 1096a25931b64e0468adfafb32dde97b
   m_configObjects: {}

@@ -1696,7 +1696,7 @@ PrefabInstance:
     - target: {fileID: 4019944856622264910, guid: 7463072abd2c9414ea14eb671db59535,
         type: 3}
       propertyPath: slingshotOffset.y
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4019944856622264910, guid: 7463072abd2c9414ea14eb671db59535,
         type: 3}
@@ -1990,6 +1990,11 @@ PrefabInstance:
       propertyPath: EnemyList
       value: 
       objectReference: {fileID: 334230331}
+    - target: {fileID: 6950389537359770930, guid: b56f7e5e98a5d4e4790314fdb40739ca,
+        type: 3}
+      propertyPath: nextlevel
+      value: Level 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6950389537359770931, guid: b56f7e5e98a5d4e4790314fdb40739ca,
         type: 3}
       propertyPath: m_LocalPosition.x

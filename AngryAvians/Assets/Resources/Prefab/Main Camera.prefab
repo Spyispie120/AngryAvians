@@ -61,7 +61,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 25
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -98,12 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slingshot: {fileID: 0}
-  yOffset: 5
-  originalPosition: {x: 0, y: 0, z: 0}
+  slingshotOffset: {x: 15, y: 13}
   panSpeed: 0.2
   lerpSpeed: 2
   lerpToBird: 0
-  cameraSize: {x: 13, y: 25}
+  cameraSize: {x: 13, y: 24}
 --- !u!61 &4019944856622265009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -117,7 +116,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 13.041676, y: 3.5247574}
+  m_Offset: {x: 14.957422, y: 9.625519}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -128,5 +127,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 63.444984, y: 29.690933}
+  m_Size: {x: 34.856403, y: 17.48941}
   m_EdgeRadius: 0

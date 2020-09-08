@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameCoordinator : MonoBehaviour
 {
     public static GameCoordinator Instance;
     public GameObject EnemyList;
     public List<Oink> enemies;
+    public string nextlevel;
 
     private void Awake()
     {
@@ -23,14 +25,24 @@ public class GameCoordinator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(enemies.Count <= 0)
         {
-            Debug.Log("next level");
+            if (nextlevel.Length > 0)
+            {
+                StartCoroutine(NextLevel());
+            }
         }
     }
 
     public void RemoveFromList(Oink o)
     {
         enemies.Remove(o);
+    }
+
+    IEnumerator NextLevel()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(nextlevel);
     }
 }
