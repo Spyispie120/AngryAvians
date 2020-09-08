@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
-
+    
     [SerializeField] private Slingshot slingshot;
     [SerializeField] private Vector2 slingshotOffset;
     private Camera cam;
