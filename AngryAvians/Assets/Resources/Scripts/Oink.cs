@@ -32,7 +32,9 @@ public class Oink : MonoBehaviour
         //                                                                     collision.relativeVelocity.normalized) >= DIRECTIONAL_THRESHOLD));
         if (IsFatalVelocity(collision))
         {
+            GameCoordinator.Instance.RemoveFromList(this); // die = remove
             Destroy(this.gameObject);
+            
         }
     }
 
